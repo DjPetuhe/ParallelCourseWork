@@ -3,8 +3,10 @@
 int* GraphHelper::arrayShuffle(int size, int s, int f)
 {
 	int* order = new int[size];
+
 	for (int i = 0; i < size; i++)
 		order[i] = i;
+
 	for (int i = 0; i < size; i++)
 	{
 		int j = rand() % size;
@@ -12,6 +14,7 @@ int* GraphHelper::arrayShuffle(int size, int s, int f)
 		order[i] = order[j];
 		order[j] = k;
 	}
+
 	for (int i = 1; i < size - 1; i++)
 	{
 		if (order[i] == s - 1)
@@ -25,6 +28,7 @@ int* GraphHelper::arrayShuffle(int size, int s, int f)
 			order[size - 1] = f - 1;
 		}
 	}
+
 	return order;
 }
 
@@ -32,13 +36,17 @@ int** GraphHelper::randomInicial(int size, int s, int f)
 {
 	int* order = arrayShuffle(size, s, f);
 	int** graph = new int *[size];
+
 	for (int i = 0; i < size; i++)
 	{
 		graph[i] = new int[size] { 0 };
 	}
+
 	for (int i = 0; i < size - 1; i++)
 		graph[order[i]][order[i + 1]] = 1;
+
 	delete[] order;
+
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
@@ -51,18 +59,22 @@ int** GraphHelper::randomInicial(int size, int s, int f)
 				graph[i][j] = 1;
 		}
 	}
+
 	return graph;
 }
 
 void GraphHelper::print(int** graph, int size)
 {
 	cout << endl << "    ";
+
 	for (int i = 0; i < size; i++)
 		cout << setw(3) << i + 1;
 	cout << endl << "    ";
+
 	for (int i = 0; i < size; i++)
 		cout << "---";
 	cout << endl;
+
 	for (int i = 0; i < size; i++)
 	{
 		cout << setw(2) << i + 1 << " |";

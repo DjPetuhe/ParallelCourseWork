@@ -129,11 +129,15 @@
   <ItemGroup>
     <ClCompile Include="GraphHelper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ParallelBFS.cpp" />
     <ClCompile Include="SerialBFS.cpp" />
+    <ClCompile Include="SyncBfsQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphHelper.h" />
+    <ClInclude Include="ParallelBFS.h" />
     <ClInclude Include="SerialBFS.h" />
+    <ClInclude Include="SyncBfsQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

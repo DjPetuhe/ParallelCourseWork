@@ -12,4 +12,3 @@ public:
 	static int** randomInicial(int graphSize, int s, int f);
 	static void print(int** graph, int graphSize);
 };
-
