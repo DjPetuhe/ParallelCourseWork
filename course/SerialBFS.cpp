@@ -1,8 +1,7 @@
 #include "SerialBFS.h"
 
-vector<int> SerialBFS::findPath(int** graph, int size, int s, int f)
+int* SerialBFS::findPath(int** graph, int size, int s)
 {
-	bool finished = false;
 	int* parent = new int[size] { -1 };
 	bool* inQueue = new bool[size] { false };
 	queue<int> plan;
@@ -26,24 +25,5 @@ vector<int> SerialBFS::findPath(int** graph, int size, int s, int f)
 
 	delete[] inQueue;
 
-	return pathByParents(parent, s, f);
-}
-
-vector<int> SerialBFS::pathByParents(int* parent, int s, int f)
-{
-	vector<int> path;
-
-	int curr = f - 1;
-	path.push_back(f - 1);
-
-	while (curr != s - 1)
-	{
-		curr = parent[curr];
-		path.push_back(curr);
-	}
-
-	delete[] parent;
-
-	reverse(path.begin(), path.end());
-	return path;
+	return parent;
 }

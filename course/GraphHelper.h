@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 #pragma once
@@ -11,4 +12,5 @@ private:
 public:
 	static int** randomInicial(int graphSize, int s, int f);
 	static void print(int** graph, int graphSize);
+	static vector<int> pathByParents(int* parent, int s, int f);
 };

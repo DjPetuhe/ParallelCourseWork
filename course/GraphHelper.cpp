@@ -83,3 +83,21 @@ void GraphHelper::print(int** graph, int size)
 		cout << endl;
 	}
 }
+
+vector<int> GraphHelper::pathByParents(int* parent, int s, int f)
+{
+	vector<int> path;
+
+	int curr = f - 1;
+	path.push_back(f - 1);
+	while (curr != s - 1)
+	{
+		curr = parent[curr];
+		path.push_back(curr);
+	}
+
+	delete[] parent;
+
+	reverse(path.begin(), path.end());
+	return path;
+}
