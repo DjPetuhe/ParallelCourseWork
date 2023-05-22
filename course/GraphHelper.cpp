@@ -38,9 +38,7 @@ int** GraphHelper::randomInicial(int size, int s, int f)
 	int** graph = new int *[size];
 
 	for (int i = 0; i < size; i++)
-	{
 		graph[i] = new int[size] { 0 };
-	}
 
 	for (int i = 0; i < size - 1; i++)
 		graph[order[i]][order[i + 1]] = 1;
