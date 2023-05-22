@@ -19,5 +19,4 @@ public:
 	bool tryAdd(int el);
 	int pop();
 	bool isEmpty();
-	bool wasInQueue(int el);
 };

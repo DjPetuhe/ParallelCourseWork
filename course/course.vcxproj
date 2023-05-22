@@ -127,14 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileWorker.cpp" />
     <ClCompile Include="GraphHelper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OptionMenu.cpp" />
+    <ClCompile Include="OwnTimer.cpp" />
     <ClCompile Include="ParallelBFS.cpp" />
     <ClCompile Include="SerialBFS.cpp" />
     <ClCompile Include="SyncBfsQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileWorker.h" />
     <ClInclude Include="GraphHelper.h" />
+    <ClInclude Include="OptionMenu.h" />
+    <ClInclude Include="OwnTimer.h" />
     <ClInclude Include="ParallelBFS.h" />
     <ClInclude Include="SerialBFS.h" />
     <ClInclude Include="SyncBfsQueue.h" />

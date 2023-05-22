@@ -101,3 +101,10 @@ vector<int> GraphHelper::pathByParents(int* parent, int s, int f)
 	reverse(path.begin(), path.end());
 	return path;
 }
+
+void GraphHelper::printPath(vector<int> path)
+{
+	for (int i = 0; i < path.size() - 1; i++)
+		cout << path[i] + 1 << "->";
+	cout << path[path.size() - 1] + 1 << endl;
+}

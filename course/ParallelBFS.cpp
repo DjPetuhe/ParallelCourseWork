@@ -1,5 +1,4 @@
 #include "ParallelBFS.h"
-#include <chrono>
 
 int* ParallelBFS::findPath(int** graph, int size, int s, int threads)
 {
