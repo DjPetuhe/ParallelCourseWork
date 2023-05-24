@@ -47,5 +47,15 @@ int SyncBfsQueue::pop()
 bool SyncBfsQueue::allQueued()
 {
 	lock_guard<mutex> guard(mtx);
-	return enqueued == numberOfNodes;
+	return enqueued == numberOfNodes && queuesEmpty();
+}
+
+bool SyncBfsQueue::queuesEmpty()
+{
+	for (int i = 0; i < queues.size(); i++)
+	{
+		if (!queues[i].empty())
+			return false;
+	}
+	return true;
 }

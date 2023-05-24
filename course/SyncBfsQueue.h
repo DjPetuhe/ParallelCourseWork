@@ -14,6 +14,7 @@ private:
 	vector<int> levels;
 	int enqueued;
 	int numberOfNodes;
+	bool queuesEmpty();
 public:
 	SyncBfsQueue(int numberOfNodes, int startNode);
 	bool tryAdd(int el, int parent);
