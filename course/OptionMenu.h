@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "BFSVerificator.h"
 #include "GraphHelper.h"
 #include "ParallelBFS.h"
 #include "FileWorker.h"

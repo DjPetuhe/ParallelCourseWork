@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BFSVerificator.cpp" />
     <ClCompile Include="FileWorker.cpp" />
     <ClCompile Include="GraphHelper.cpp" />
     <ClCompile Include="main.cpp" />
@@ -137,6 +138,7 @@
     <ClCompile Include="SyncBfsQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BFSVerificator.h" />
     <ClInclude Include="FileWorker.h" />
     <ClInclude Include="GraphHelper.h" />
     <ClInclude Include="OptionMenu.h" />

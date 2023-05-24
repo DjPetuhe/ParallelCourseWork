@@ -1,5 +1,6 @@
 #include <mutex>
 #include <vector>
+#include <queue>
 using namespace std;
 
 #pragma once
@@ -8,15 +9,14 @@ class SyncBfsQueue
 {
 private:
 	mutex mtx;
-	vector<int> queue;
+	vector<queue<int>> queues;
 	vector<bool> inQueue;
-	int size;
-	int realSize;
-	int head;
-	int tail;
+	vector<int> levels;
+	int enqueued;
+	int numberOfNodes;
 public:
-	SyncBfsQueue(int maxSize);
-	bool tryAdd(int el);
+	SyncBfsQueue(int numberOfNodes, int startNode);
+	bool tryAdd(int el, int parent);
 	int pop();
-	bool isEmpty();
+	bool allQueued();
 };

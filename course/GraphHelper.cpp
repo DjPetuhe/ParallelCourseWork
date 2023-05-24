@@ -105,4 +105,5 @@ void GraphHelper::printPath(vector<int> path)
 	for (int i = 0; i < path.size() - 1; i++)
 		cout << path[i] + 1 << "->";
 	cout << path[path.size() - 1] + 1 << endl;
+	cout << "Length = " << path.size() << endl;
 }

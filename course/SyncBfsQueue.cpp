@@ -1,29 +1,30 @@
 #include "SyncBfsQueue.h"
 
-SyncBfsQueue::SyncBfsQueue(int maxSize)
+SyncBfsQueue::SyncBfsQueue(int numberOfNodes, int startNode)
 {
-	this->head = 0;
-	this->tail = 1;
-	this->size = 0;
-	this->realSize = maxSize;
-	this->queue = vector<int>(maxSize);
-	this->inQueue = vector<bool>(maxSize);
+	this->numberOfNodes = numberOfNodes;
+	this->queues = vector<queue<int>>(1);
+	this->inQueue = vector<bool>(numberOfNodes, false);
+	this->levels = vector<int>(numberOfNodes, 0);
+	queues[0].push(startNode);
+	inQueue[startNode] = true;
+	this->enqueued = 1;
 }
 
-bool SyncBfsQueue::tryAdd(int el)
+bool SyncBfsQueue::tryAdd(int el, int parent)
 {
 	lock_guard<mutex> guard(mtx);
-	if (size == realSize || inQueue[el])
+	if (enqueued == numberOfNodes || inQueue[el])
 		return false;
 
-	queue[tail - 1] = el;
-	inQueue[el] = true;
-	size++;
+	if (levels[parent] + 1 == queues.size())
+		queues.push_back(queue<int>());
 
-	if (tail == realSize - 1)
-		tail = 1;
-	else
-		tail++;
+	int currLevel = levels[parent] + 1;
+	queues[currLevel].push(el);
+	levels[el] = currLevel;
+	inQueue[el] = true;
+	enqueued++;
 
 	return true;
 }
@@ -31,22 +32,20 @@ bool SyncBfsQueue::tryAdd(int el)
 int SyncBfsQueue::pop()
 {
 	lock_guard<mutex> guard(mtx);
-	if (size <= 0)
-		return 0;
-
-	int el = queue[head];
-	size--;
-
-	if (head == realSize - 1)
-		head = 0;
-	else
-		head++;
-
-	return el;
+	for (int i = 0; i < queues.size(); i++)
+	{
+		if (!queues[i].empty())
+		{
+			int front = queues[i].front();
+			queues[i].pop();
+			return front;
+		}
+	}
+	return -1;
 }
 
-bool SyncBfsQueue::isEmpty()
+bool SyncBfsQueue::allQueued()
 {
 	lock_guard<mutex> guard(mtx);
-	return size == 0;
+	return enqueued == numberOfNodes;
 }
