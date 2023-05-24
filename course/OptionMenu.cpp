@@ -27,6 +27,7 @@ void OptionMenu::runBfs(int** graph, int size, int start, int finish, int thread
 	int* parents = SerialBFS::findPath(graph, size, start);
 	timer.stopTimer();
 	vector<int> path = GraphHelper::pathByParents(parents, start, finish);
+	cout << "Serial algorithm:" << endl;
 	GraphHelper::printPath(path);
 	cout << "Serial algorithm path exist = " << boolalpha << BFSVerificator::verificate(graph, path, size) << endl;
 	timer.printTime("Serial bfs");
@@ -35,6 +36,7 @@ void OptionMenu::runBfs(int** graph, int size, int start, int finish, int thread
 	int* parents2 = ParallelBFS::findPath(graph, size, start, threads);
 	timer.stopTimer();
 	vector<int> path2 = GraphHelper::pathByParents(parents2, start, finish);
+	cout << "Parallel algorithm:" << endl;
 	GraphHelper::printPath(path);
 	cout << "Parallel algorithm path exist = " << boolalpha << BFSVerificator::verificate(graph, path2, size, path.size()) << endl;
 	timer.printTime("Parallel bfs");
